@@ -1,0 +1,30 @@
+
+<html>
+<title>html</title>
+<body>
+<input id="task" type="text" placeholder="Add task">
+<button onclick="addTask()">Add</button>
+<ul id="list"></ul>
+
+<script>
+let tasks = [];
+function addTask() {
+  let task = document.getElementById("task").value;
+  tasks.push(task);
+  document.getElementById("task").value = "";
+  renderList();
+}
+function renderList() {
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+  for (let i = 0; i < tasks.length; i++) {
+    list.innerHTML += `<li>${tasks[i]} <button onclick="deleteTask(${i})">Delete</button></li>`;
+  }
+}
+function deleteTask(index) {
+  tasks.splice(index, 1);
+  renderList();
+}
+</script>
+</body>
+</html>
